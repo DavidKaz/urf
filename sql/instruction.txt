@@ -1,0 +1,1 @@
+1) download mariadb from http://ftp.mirror.yandex.ru/mirrors/mariadb/mariadb-10.0.15/winx64-packages/
