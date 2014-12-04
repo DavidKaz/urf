@@ -17,9 +17,9 @@ CREATE TABLE `jpeg2_temp` (
   `jpeg_date` datetime DEFAULT NULL,
   KEY `i_jsn` (`jpeg_short_name`(10)),
   KEY `i_jd` (`jpeg_date`)
-) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
- CREATE TABLE `jpegs2` (
+CREATE TABLE `jpegs2` (
   `jpeg_path` varchar(4096) DEFAULT NULL,
   `jpeg_name` varchar(256) DEFAULT NULL,
   `jpeg_short_name` varchar(256) DEFAULT NULL,

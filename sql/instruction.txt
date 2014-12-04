@@ -1,1 +1,16 @@
 1) download mariadb from http://ftp.mirror.yandex.ru/mirrors/mariadb/mariadb-10.0.15/winx64-packages/
+follow the instruction at
+https://mariadb.com/kb/en/mariadb/documentation/getting-started/binary-packages/installing-mariadb-msi-packages-on-windows/
+2)Login to the database as root
+mysql --host=127.0.0.1 -u root -p
+
+create database and user to use it:
+create database photos;
+grant usage on photos.* to photos@localhost identified by 'photos';
+grant all privileges on photos.* to photos@localhost identified by 'photos';
+3)run the second shell and try to connect with new account to the new database
+mysql -h 127.0.0.1 -u photos -pphotos photos
+type `quit` and then return to create tables:
+mysql -h 127.0.0.1 -u photos -pphotos photos < sql/create_tables.sql
+4)load data from file files2 into database
+mysqlimport -h 127.0.0.1 -d --user=photos --password=photos -c file,s_date --fields-terminated-by=";" --verbose --local photos var/files2
