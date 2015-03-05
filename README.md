@@ -33,3 +33,21 @@ exiv2 /cygdrive/c/tmp/dsc_0564.jpg
 Запустить bin/2.5.sh
 Он там немного подчистит содержимое файла files2
 Итого в папке var должно быть 2 файла files_old - список файлов и files2 - тот же список, но с датой из эксифа
+
+Создание и первоначальное заполнение базы данных
+1)Скачать mariadb с http://ftp.mirror.yandex.ru/mirrors/mariadb/mariadb-10.0.15/winx64-packages/
+или более новую версию
+Следовать инструкции по установке
+https://mariadb.com/kb/en/mariadb/documentation/getting-started/binary-packages/installing-mariadb-msi-packages-on-windows/
+2)Подключиться к серверу базы данных как пользователь root
+mysql --host=127.0.0.1 -u root -p
+Создать базу данных и пользователя для неё:
+create database photos;
+grant usage on photos.* to photos@localhost identified by 'photos';
+grant all privileges on photos.* to photos@localhost identified by 'photos';
+3)Запустить второе окно shell (cygwin) и попробовать подключиться созданным пользователем к базе данных
+mysql -h 127.0.0.1 -u photos -pphotos photos
+Если зашло успешно, то набрать quit и запустить скрипт создания таблиц:
+mysql -h 127.0.0.1 -u photos -pphotos photos < sql/create_tables.sql
+4)Загрузить данные из файла files2 в базу данных
+mysqlimport -h 127.0.0.1 -d --user=photos --password=photos -c file,s_date --fields-terminated-by=";" --verbose --local photos var/files2
