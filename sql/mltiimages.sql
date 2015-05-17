@@ -1,0 +1,1 @@
+select count(*), m.image_type, r.raw_path from multiimages m ,raws2 r where m.fname=r.raw_short_name and ifnull(m.fdate, sysdate())=ifnull(r.raw_date, sysdate()) group by m.image_type, r.raw_path order by 1 desc;
