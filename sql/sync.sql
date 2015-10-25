@@ -1,11 +1,12 @@
 delete f2 . * from files2 f2
         inner join
-    files2_buf f2b ON concat('./', f2b.file) = f2.file 
+    files2_buf f2b ON f2b.file = f2.file 
 where
     f2b.s_date = 'deleting';
 
-insert into files2 (file, s_date)
+replace into files2 (file, s_date)
 select f2b.file, f2b.s_date from files2_buf f2b where f2b.s_date!='deleting';
+
 
 update files2 
 set 
