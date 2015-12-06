@@ -22,7 +22,7 @@ insert into raws2
 (raw_path,raw_name,raw_date)
 select distinct trim(trailing substring_index(file, '/', -1) from file),
  substring_index(file, '/', -1),f_datetime from files2
- where substring_index(file, '.', -1) in ('srw', 'orf', 'cr2', 'dng', 'dcr','raw','rw2','raf','nef');
+ where substring_index(file, '.', -1) in ('srw', 'orf', 'cr2', 'dng', 'dcr','raw','rw2','raf','nef','pef');
 update raws2 
 set raw_short_name = substring_index(raw_name, '.', 1);
 
