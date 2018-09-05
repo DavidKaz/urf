@@ -9,33 +9,7 @@ the work is in progress
 
 Для использования на Windows надо установить cygwin, предоставляющий среду unix. Скачать установщик для своей версии windows можно тут https://cygwin.com/install.html
 
-Список необходимых пакетов при работе в cygwin содержится в файле cygwin.packages
-
-
-Также необходимо установить программу exiv2. Бинарная сборка с официального сайта программы не подойдёт, необходимо собрать вручную. Для этого надо скачать архив исходников в формате tar.gz со страницы http://www.exiv2.org/download.html. Далее распаковать его, например, 
-
-`tar xvf exiv2-0.24.tar.gz` 
-
-далее заходим в распакоанный каталог
-
-`cd exiv2-0.24/`
-
-собираем
-
-`./configure`
-
-`make`
-
-и устанавливаем
-
-`make install`
-
-
-Для проверки работы натравим её на какой-нибудь файл фотографии
-
-`exiv2 /cygdrive/c/tmp/dsc_0564.jpg`
-
-Должно показать базовую информацию exif этого снимка
+Список необходимых пакетов: mysql, exiv2; Остальное ставится как зависимости.
 
 
 ### Работа со скриптами:
@@ -52,7 +26,7 @@ the work is in progress
 Итого в папке var должно быть 2 файла files_old - список файлов и files2 - тот же список, но с датой из эксифа
 
 ### Создание и первоначальное заполнение базы данных
-- Скачать mariadb с http://ftp.mirror.yandex.ru/mirrors/mariadb/mariadb-10.0.15/winx64-packages/
+- Скачать mariadb с http://ftp.mirror.yandex.ru/mirrors/mariadb/mariadb-10.3.9/winx64-packages/
 или более новую версию
 Следовать инструкции по установке
 https://mariadb.com/kb/en/mariadb/documentation/getting-started/binary-packages/installing-mariadb-msi-packages-on-windows/
